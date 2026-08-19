@@ -41,24 +41,20 @@ namngivna parametrar och veta exakt vad du tittar på.
 
 Det du egentligen vill ha. Se `docs/03-sniffa.md` för arbetsgången.
 
-## Viktigt: PHNIX-korten har flera RS-485-bussar
+## Var RS-485 sitter
 
-Det här är den stora fällan, och skiljer sig från vad `docs/02-protokoll.md`
-beskriver generellt:
+Moderkortet för KMP Smart 36/60 har **en** RS-485-buss: den tvåpoliga plinten
+märkt `RS485`, alltså `R485(A)` och `R485(B)`, som manualen kallar
+trådstyrningens kommunikation. Där hänger både den trådbundna panelen och
+WiFi-modulen.
 
-| Buss | Vad den är | Använd? |
-|------|------------|---------|
-| Panelbussen | Internkommunikation mellan styrkort och manöverpanel | Nej — proprietär, och du stör panelen |
-| WiFi-modulens port | Där modulen på bilden sitter | Går, men konkurrerar med modulen |
-| **`CN13`** | Dedikerad Modbus-slavport på nyare PHNIX-kort | **Ja** |
+> **Korrigering.** Innan manualen fanns skrev jag att nyare PHNIX-kort har en
+> dedikerad Modbus-slavport `CN13`. Det gäller inte det här kortet: `CN13(HEAT)`
+> är en 230 V-utgång för 4-vägsventilen. Fullständig gränssnittstabell i
+> [`docs/08-moderkort.md`](08-moderkort.md).
 
-Leta efter en kontakt märkt **`CN13`** på styrkortet. Den är avsedd för precis
-det du vill göra och stör varken panel eller WiFi-modul — du kan alltså behålla
-AquaTemp-appen samtidigt. Finns ingen CN13 får du använda WiFi-modulens port och
-koppla loss modulen.
-
-Parametern **`H37` (Unit Address)** i servicemenyn är pumpens Modbus-slavadress.
-Läs av den i panelen så slipper du gissa — annars hittar `--scan-slaves` den.
+Parametern **`H37` (Unit Address)** i servicemenyn är pumpens slavadress. Läs av
+den i panelen så slipper du gissa — annars hittar `--scan-slaves` den.
 
 ## Parametertabell
 
@@ -66,8 +62,6 @@ Koderna nedan är PHNIX egna och visas både i manöverpanelens servicemeny och 
 AquaTemp-appen. **Registernumren är inte publika** — men koderna är
 betydelsekartan. Arbetsgången blir: dumpa registren, ändra en sak i panelen, se
 vilket register som rör sig, och sätt rätt kod på det.
-
-Maskinläsbar version med alla 150 parametrar: `data/phnix_parameters.json`.
 
 Hela tabellen med alla 150 koder — mätvärden, börvärden, ingångar, utgångar
 och serviceparametrar — finns i **[`docs/06-kommandotabell.md`](06-kommandotabell.md)**,
@@ -100,4 +94,4 @@ kolumnerna, och den som matchar panelens avlästa inloppstemperatur är den rät
 - [radical-squared/aquatemp](https://github.com/radical-squared/aquatemp) —
   HA-integration mot AquaTemp-molnet; parametertabellen ovan är hämtad därifrån
 - [KMP Smart 60 produktsida](https://www.kmp.se/kmp-smart-60/)
-- Communityrapporter om `CN13` som dedikerad Modbus-slavport på PHNIX-kort
+- KMP Smart 36/60/75/95 användarmanual, avsnitt 4.11 och kapitel 7

@@ -10,9 +10,10 @@ Pumpen är en **KMP Smart 60** — en inverterstyrd poolvärmepump byggd av
 Tuya). WiFi-modulen är en **WiFi ↔ RS-485-brygga** som är **Modbus RTU-master**
 mot styrkortet.
 
-Du behöver alltså inte knäcka något hemligt protokoll. På nyare PHNIX-kort finns
-dessutom en **dedikerad Modbus-slavport märkt `CN13`** — koppla in dig där och du
-kan prata lokalt med pumpen *samtidigt* som AquaTemp-appen fortsätter fungera.
+Du behöver alltså inte knäcka något hemligt protokoll. Tillverkarens manual är
+genomgången: WiFi-modulens kontakt `CN6` är `12V`, `485A`, `485B`, `GND`, och på
+moderkortet sitter bussen på den tvåpoliga plinten märkt **`RS485`**
+(`R485(A)`/`R485(B)`), delad med den trådbundna panelen.
 
 ---
 
@@ -22,7 +23,8 @@ kan prata lokalt med pumpen *samtidigt* som AquaTemp-appen fortsätter fungera.
 
 | | |
 |---|---|
-| 🎯 **[Din pump: KMP Smart 60](docs/05-kmp-smart-60.md)** | Vem som byggt den, vilka bussar som finns, `CN13`, molnvägen |
+| 🎯 **[Din pump: KMP Smart 60](docs/05-kmp-smart-60.md)** | Vem som byggt den, var RS-485 sitter, molnvägen |
+| 🔧 **[Moderkort och WiFi-modul](docs/08-moderkort.md)** | `CN6`-pinout, `RS485`-plinten, hela gränssnittstabellen |
 | 🔌 **[Steg-för-steg-guide](docs/03-sniffa.md)** | Från passiv sniffning till att skriva börvärden |
 | 📋 **[Kommandon och parametrar](docs/06-kommandotabell.md)** | Alla 150 koder med svensk förklaring |
 | 🚨 **[Felkoder](docs/07-felkoder.md)** | `E`, `P` och `F` med åtgärd |
@@ -57,7 +59,7 @@ kan prata lokalt med pumpen *samtidigt* som AquaTemp-appen fortsätter fungera.
 **[5. KMP Smart 60 / PHNIX](docs/05-kmp-smart-60.md)** — det som gäller din pump
 [Vem har byggt den](docs/05-kmp-smart-60.md#vem-har-byggt-den) ·
 [Två vägar: moln eller lokalt](docs/05-kmp-smart-60.md#två-vägar) ·
-[Flera RS-485-bussar och `CN13`](docs/05-kmp-smart-60.md#viktigt-phnix-korten-har-flera-rs-485-bussar) ·
+[Var RS-485 sitter](docs/05-kmp-smart-60.md#var-rs-485-sitter) ·
 [Parametertabell](docs/05-kmp-smart-60.md#parametertabell) ·
 [Skalning](docs/05-kmp-smart-60.md#skalning)
 
@@ -76,11 +78,17 @@ kan prata lokalt med pumpen *samtidigt* som AquaTemp-appen fortsätter fungera.
 
 **[7. Felkoder](docs/07-felkoder.md)** — vad displayen försöker säga
 [Koderna krockar med parameterkoderna](docs/07-felkoder.md#viktigt-koderna-krockar-med-parameterkoderna) ·
-[`E` driftfel](docs/07-felkoder.md#e--driftfel) ·
 [`P` givarfel](docs/07-felkoder.md#p--givarfel) ·
-[`F` drivkortsfel](docs/07-felkoder.md#f--drivkort-och-frekvensomriktare) ·
-[Hur felen syns över Modbus](docs/07-felkoder.md#hur-felen-syns-över-modbus) ·
-[Via molnet i stället](docs/07-felkoder.md#via-molnet-i-stället)
+[`E` drift- och skyddsfel](docs/07-felkoder.md#e--drift--och-skyddsfel) ·
+[`F` frekvensomriktare](docs/07-felkoder.md#f--frekvensomriktare-och-drivkort) ·
+[Skydd utan felkod](docs/07-felkoder.md#skydd-utan-felkod) ·
+[Hur felen syns över Modbus](docs/07-felkoder.md#hur-felen-syns-över-modbus)
+
+**[8. Moderkort och WiFi-modul](docs/08-moderkort.md)** — avläst ur manualen
+[WiFi-modulens `CN6`](docs/08-moderkort.md#wifi-modulen-cn6) ·
+[Var RS-485 sitter](docs/08-moderkort.md#moderkortet-var-rs-485-sitter) ·
+[Hela gränssnittstabellen](docs/08-moderkort.md#hela-gränssnittstabellen) ·
+[Vad manualen inte säger](docs/08-moderkort.md#vad-manualen-inte-säger)
 
 ### Kod och data
 
@@ -90,7 +98,7 @@ kan prata lokalt med pumpen *samtidigt* som AquaTemp-appen fortsätter fungera.
 | [`tools/modbus_probe.py`](tools/modbus_probe.py) | Aktiv master: slavskanning, registerdump, ändringsbevakning |
 | [`tools/protocol.py`](tools/protocol.py) | Ramavkodning, CRC och checksummor. Inga beroenden |
 | [`data/phnix_parameters.json`](data/phnix_parameters.json) | Alla 150 parameterkoder maskinläsbart |
-| [`data/error_codes.json`](data/error_codes.json) | Felkoderna maskinläsbart, med säkerhetsnivå per kod |
+| [`data/error_codes.json`](data/error_codes.json) | Alla 46 felkoder ur manualen, maskinläsbart |
 | [`esphome/poolpump-modbus.yaml`](esphome/poolpump-modbus.yaml) | ESPHome-config för permanent lokal Home Assistant-koppling |
 
 ---
@@ -103,7 +111,7 @@ pip install -r requirements.txt
 # 1. Lyssna passivt på bussen med originalmodulen inkopplad
 python3 tools/rs485_sniff.py --port /dev/ttyUSB0 --scan
 
-# 2. Bli master själv (på CN13, eller med WiFi-modulen bortkopplad)
+# 2. Bli master själv (på RS485-plinten, med WiFi-modulen bortkopplad)
 python3 tools/modbus_probe.py --port /dev/ttyUSB0 --scan-slaves
 python3 tools/modbus_probe.py --port /dev/ttyUSB0 --unit 1 --dump
 
@@ -129,10 +137,9 @@ frekvensgränser kan skada kompressorn.
 Verktygen är testade mot en emulerad Modbus-slav — läsning, skrivning,
 slavskanning, dump och watch fungerar.
 
-Parameterkoderna kommer från AquaTemp-molnets protokolldefinition och är
-tillförlitliga. Felkoderna är sammanställda ur flera svenska manualer för samma
-OEM-styrkort; `E`- och `P`-serien är samstämmig, `F`-serien varierar mellan
-modeller och är markerad därefter.
+Felkoderna, moderkortets gränssnittstabell och WiFi-modulens pinout är
+transkriberade ur **KMP:s egen manual** — inga gissningar kvar där.
+Parameterkoderna kommer från AquaTemp-molnets protokolldefinition.
 
 **Modbus-registernumren är inte publika** och måste kartläggas mot din egen pump
 med `--dump` och `--watch`. Det är den enda biten som återstår.

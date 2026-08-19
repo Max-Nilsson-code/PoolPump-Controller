@@ -2,43 +2,38 @@
 
 # 1. Vad är det för modul?
 
-> **Uppdaterat:** pumpen är bekräftad som KMP Smart 60, alltså PHNIX-byggd med
-> AquaTemp-appen. Modulen är en AquaTemp-modul, inte en Tuya-modul. Arkitekturen
-> nedan stämmer ändå — se `docs/05-kmp-smart-60.md` för det som gäller specifikt.
+Bekräftat mot KMP:s egen manual. Detaljerad pinout och moderkortets fullständiga
+gränssnittstabell finns i [`docs/08-moderkort.md`](08-moderkort.md).
 
 ## Kort svar
 
-Bilden visar en **WiFi-modul (gateway) för poolvärmepump**, av den typ som
-sitter monterad på pumpens utsida eller på baksidan av manöverpanelen. Den
-tydliga `RS-485`-märkningen på höljet plus den 4-poliga kabeln är signaturen
-för den överlägset vanligaste konstruktionen: modulen är en
-**WiFi ↔ RS-485-brygga** som pratar **Modbus RTU** med värmepumpens styrkort
-och Tuya-molnet ("Smart Life"/tillverkarens egna app) uppåt.
+Modulen på bilden är **KMP:s WiFi-modul**, dokumenterad i manualens kapitel 7.
+Den är en **WiFi ↔ RS-485-brygga**: tar emot data från molnet och skickar till
+huvudenheten, och tvärtom. Uppåt pratar den med **AquaTemp**-molnet
+(`cloud.linked-go.com`), nedåt sitter den på moderkortets RS-485-buss.
 
-Modulerna säljs som generiska Tuya-moduler (t.ex. `HS01-485-WR3` med
-RTL8710BN, eller en `WBR3`) och kläs i olika varumärken. Samma hårdvara sitter
-i Fairland, IPS, Madimack, Duratech, Aquark, Poolex, Gullberg & Jansson m.fl. —
-och de delar i praktiken samma registerkarta.
+De fyra lysdioderna är nätverkskonfiguration, routeranslutning,
+molnserveranslutning och **485-kommunikation** — det är de ikonerna du ser
+tryckta på höljet. Den runda knappen är konfigurationsknappen.
 
-> Detta är en kvalificerad slutsats utifrån bilden, inte en verifierad
-> identifiering. `docs/03-sniffa.md` visar hur du bevisar det på 15 minuter.
+Matning: **DC 8–12 V**, 50 mA i viloläge, max 1 A i topp. Mått 78 × 63 × 24 mm,
+magnet på baksidan.
 
 ## Kontakten
 
-Den 4-poliga kontakten (PH2.54 eller en M10-skruvkontakt beroende på modell)
-går till en port märkt **`WIFI`**, `RS485` eller `485` på styrkortet:
+Modulens kontakt heter `CN6` och har fyra poler:
 
-| Pinne | Signal | Färg (vanligt, verifiera alltid) |
-|-------|--------|----------------------------------|
-| 1 | +12 V | röd |
-| 2 | GND   | svart |
-| 3 | A (D+ / non-inverting) | gul |
-| 4 | B (D− / inverting)     | vit/blå |
+| Pinne | Signal |
+|-------|--------|
+| 4 | `GND` |
+| 3 | `485B` |
+| 2 | `485A` |
+| 1 | `12V` |
 
-Färgkoderna varierar mellan tillverkare. **Mät alltid** innan du kopplar in
-något: 12 V mellan pinne 1 och 2 med pumpen strömsatt, och ~0,2 V viloskillnad
-mellan A och B. Vissa moduler matas med 5 V i stället — kolla innan du matar
-något från den.
+På moderkortet (KMP Smart 36/60) sitter motsvarande buss på en **tvåpolig plint
+märkt `RS485`** — `R485(A)` och `R485(B)`, i manualen beskriven som
+trådstyrningens kommunikation. Det är alltså samma buss som manöverpanelen
+delar. Plinten har ingen matning; modulens 12 V kommer från annat håll.
 
 Det spelar ingen roll om du kastar om A och B — inget går sönder, du får bara
 ingen data. Prova tvärtom om det är tyst.
@@ -53,3 +48,4 @@ ingen data. Prova tvärtom om det är tyst.
 - Koppla in och ur bussen med strömmen bruten.
 - Att koppla bort WiFi-modulen påverkar inte pumpens drift — panelen och
   termostaten fungerar precis som förut. Det är det ofarligaste första steget.
+- Rör inte `CN13(HEAT)`, `CN18(EMV)` eller `CN96` — det är 230 V-utgångar.

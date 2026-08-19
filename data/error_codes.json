@@ -1,26 +1,351 @@
 {
-  "note": "Felkoder för poolvärmepumpar i PHNIX/AquaTemp-familjen (KMP Smart m.fl.). E- och P-serien är samstämmig över flera svenska manualer för samma OEM-styrkort. F-serien kommer från frekvensomriktarens drivkort och varierar mest mellan modeller. Verifiera alltid mot KMP:s egen manual.",
-  "source": "Svenska installations- och bruksanvisningar för inverterstyrda poolvärmepumpar med samma OEM-styrkort (Poolstore, Flotde, InverPilot, Gullberg & Jansson m.fl.)",
-  "warning": "Koderna E/P/F krockar namnmässigt med parametergrupperna E/P/F i data/phnix_parameters.json. Se docs/07-felkoder.md.",
+  "source": "KMP Smart 36/60/75/95 användarmanual, avsnitt 4.10 Parameterlista och felkoder",
+  "note": "Transkriberad ur tillverkarens egen manual. Ersätter tidigare sammanställning från andra tillverkares manualer.",
+  "warning": "Felkodernas bokstäver E, P och F krockar med parametergrupperna E, P och F i data/phnix_parameters.json. Se docs/07-felkoder.md.",
   "codes": [
-    {"code": "E01", "group": "E", "sv": "Högt systemtryck", "detail": "Högtrycksvakt löst ut. Kontrollera vattenflöde, luftflöde över förångaren och köldmediemängd.", "confidence": "hög"},
-    {"code": "E02", "group": "E", "sv": "Lågt systemtryck", "detail": "Lågtrycksvakt löst ut. Köldmediebrist, igensatt förångare eller för låg utetemperatur.", "confidence": "hög"},
-    {"code": "E03", "group": "E", "sv": "Flödesskydd", "detail": "Inget eller för lite vatten i systemet. Kontrollera cirkulationspump, filter och bypassventil.", "confidence": "hög"},
-    {"code": "E04", "group": "E", "sv": "Okänd i mina källor", "detail": "Förekommer i serien men betydelsen bekräftades inte. Slå upp i KMP:s manual. På trefasenheter är E04 ofta fasföljdsfel.", "confidence": "okänd"},
-    {"code": "E05", "group": "E", "sv": "Frostskydd vattensystem", "detail": "Vatten- eller omgivningstemperaturen är för låg.", "confidence": "hög"},
-    {"code": "E06", "group": "E", "sv": "För stor temperaturdifferens in/ut", "detail": "Vattenflödet är för lågt. Öppna bypassventilen mindre så mer vatten går genom pumpen.", "confidence": "hög"},
-    {"code": "E07", "group": "E", "sv": "Frysskydd i kylläge", "detail": "Utloppsvattnets temperatur är för låg.", "confidence": "hög"},
-    {"code": "E08", "group": "E", "sv": "Kommunikationsfel", "detail": "Ingen kommunikation mellan styrkort och display. Kontrollera panelbussens kablage.", "confidence": "hög"},
-    {"code": "P01", "group": "P", "sv": "Givarfel inloppsvatten", "detail": "Givaren är bruten eller kortsluten. Motsvarar T02.", "confidence": "hög"},
-    {"code": "P02", "group": "P", "sv": "Givarfel utloppsvatten", "detail": "Givaren är bruten eller kortsluten. Motsvarar T03.", "confidence": "hög"},
-    {"code": "P03", "group": "P", "sv": "Givarfel värmeväxlare", "detail": "Inre batteriets givare bruten eller kortsluten.", "confidence": "hög"},
-    {"code": "P04", "group": "P", "sv": "Givarfel omgivning", "detail": "Utomhusgivaren bruten eller kortsluten. Motsvarar T05.", "confidence": "hög"},
-    {"code": "P05", "group": "P", "sv": "Givarfel förångare", "detail": "Yttre batteriets givare ej ansluten, kabelbrott eller kortslutning. Motsvarar T04.", "confidence": "hög"},
-    {"code": "P07", "group": "P", "sv": "Givarfel suggas", "detail": "Sugtemperaturgivaren ej ansluten, kabelbrott eller kortslutning. Motsvarar T01.", "confidence": "hög"},
-    {"code": "F01", "group": "F", "sv": "MOP-drivlarm", "detail": "Återställs automatiskt efter cirka 150 sekunder.", "confidence": "medel"},
-    {"code": "F02", "group": "F", "sv": "Frekvensomriktaren offline", "detail": "Kommunikationsfel mellan frekvensomriktare och moderkort. Kontrollera kablaget mellan korten.", "confidence": "medel"},
-    {"code": "F03", "group": "F", "sv": "IPM-modulskydd", "detail": "Skydd i effektmodulen, ofta fasbortfall mot kompressorn.", "confidence": "medel"},
-    {"code": "F04", "group": "F", "sv": "Fel på motorströmsåterkoppling", "detail": "Avbrott eller kortslutning i strömmätningen.", "confidence": "medel"},
-    {"code": "F05", "group": "F", "sv": "Hög IPM-ingångsström eller överspänning", "detail": "DC-mellanledets spänning över skyddsnivån.", "confidence": "medel"}
+    {
+      "code": "P01",
+      "group": "P",
+      "sv": "Givarfel inloppsvatten",
+      "cause": "Temperaturgivaren är trasig eller kortsluten",
+      "action": "Kontrollera eller byt givaren"
+    },
+    {
+      "code": "P02",
+      "group": "P",
+      "sv": "Givarfel utloppsvatten",
+      "cause": "Temperaturgivaren är trasig eller kortsluten",
+      "action": "Kontrollera eller byt givaren"
+    },
+    {
+      "code": "P04",
+      "group": "P",
+      "sv": "Givarfel omgivning",
+      "cause": "Temperaturgivaren är trasig eller kortsluten",
+      "action": "Kontrollera eller byt givaren"
+    },
+    {
+      "code": "P05",
+      "group": "P",
+      "sv": "Givarfel rör",
+      "cause": "Temperaturgivaren är trasig eller kortsluten",
+      "action": "Kontrollera eller byt givaren"
+    },
+    {
+      "code": "P07",
+      "group": "P",
+      "sv": "Givarfel suggas",
+      "cause": "Temperaturgivaren är trasig eller kortsluten",
+      "action": "Kontrollera eller byt givaren"
+    },
+    {
+      "code": "P081",
+      "group": "P",
+      "sv": "Givarfel hetgas",
+      "cause": "Temperaturgivaren är trasig eller kortsluten",
+      "action": "Kontrollera eller byt givaren"
+    },
+    {
+      "code": "P09",
+      "group": "P",
+      "sv": "Givarfel frostskyddsmedel",
+      "cause": "Frostskyddsmedlets temperaturgivare är trasig eller kortsluten",
+      "action": "Kontrollera och ersätt givaren"
+    },
+    {
+      "code": "PP",
+      "group": "P",
+      "sv": "Trycksensorfel",
+      "cause": "Trycksensorn är bruten",
+      "action": "Kontrollera eller byt trycksensorn"
+    },
+    {
+      "code": "E01",
+      "group": "E",
+      "sv": "Högtrycksskydd",
+      "cause": "Högtrycksbrytaren är aktiv",
+      "action": "Kontrollera tryckbrytaren och kylkretsen"
+    },
+    {
+      "code": "E02",
+      "group": "E",
+      "sv": "Lågtrycksskydd",
+      "cause": "Lågtryck 1-skydd",
+      "action": "Kontrollera tryckbrytaren och kylkretsen"
+    },
+    {
+      "code": "E03",
+      "group": "E",
+      "sv": "Flödesvaktsskydd",
+      "cause": "Inget eller för lite vatten i vattensystemet",
+      "action": "Kontrollera rör, vattenflöde och cirkulationspump"
+    },
+    {
+      "code": "E05",
+      "group": "E",
+      "sv": "Vattenskydd, antifrysskydd",
+      "cause": "Vatten- eller omgivningstemperaturen är för låg",
+      "action": ""
+    },
+    {
+      "code": "E06",
+      "group": "E",
+      "sv": "För stor differens inlopp/utlopp",
+      "cause": "Vattenflödet är inte tillräckligt och differenstrycket lågt",
+      "action": "Kontrollera vattenflödet och om systemet är blockerat"
+    },
+    {
+      "code": "E07",
+      "group": "E",
+      "sv": "Frostskydd",
+      "cause": "Vattenflödet är inte tillräckligt",
+      "action": "Kontrollera vattenflödet och om systemet är blockerat"
+    },
+    {
+      "code": "E19",
+      "group": "E",
+      "sv": "Primärt frostskydd",
+      "cause": "Omgivningstemperaturen är låg",
+      "action": ""
+    },
+    {
+      "code": "E29",
+      "group": "E",
+      "sv": "Sekundärt frostskydd",
+      "cause": "Omgivningstemperaturen är låg",
+      "action": ""
+    },
+    {
+      "code": "E081",
+      "group": "E",
+      "sv": "Kommunikationsfel hastighetskontrollenhet",
+      "cause": "Kommunikationen mellan hastighetskontrollenheten och moderkortet misslyckas",
+      "action": "Kontrollera kommunikationsanslutningen"
+    },
+    {
+      "code": "TP",
+      "group": "T",
+      "sv": "Lågt omgivningsskydd",
+      "cause": "Omgivningstemperaturen är för låg",
+      "action": ""
+    },
+    {
+      "code": "F031",
+      "group": "F",
+      "sv": "Fläktmotor 1 fel",
+      "cause": "Låst rotor, eller dålig kontakt mellan DC-fläktmodul och fläktmotor",
+      "action": "Byt fläktmotor, eller kontrollera trådanslutningen"
+    },
+    {
+      "code": "F032",
+      "group": "F",
+      "sv": "Fläktmotor 2 fel",
+      "cause": "Låst rotor, eller dålig kontakt mellan DC-fläktmodul och fläktmotor",
+      "action": "Byt fläktmotor, eller kontrollera trådanslutningen"
+    },
+    {
+      "code": "F051",
+      "group": "F",
+      "sv": "EC-fläktens återkoppling",
+      "cause": "Fel på fläktmotorn, fläktmotorn stannar",
+      "action": "Kontrollera om fläktmotorn är trasig eller låst"
+    },
+    {
+      "code": "F01",
+      "group": "F",
+      "sv": "Drv1 MOP-larm",
+      "cause": "MOP-drivlarm",
+      "action": "Återhämtar sig efter 150 s"
+    },
+    {
+      "code": "F02",
+      "group": "F",
+      "sv": "Frekvensomriktaren av",
+      "cause": "Kommunikationsfel mellan frekvensomriktare och moderkort",
+      "action": "Kontrollera kommunikationsanslutningarna"
+    },
+    {
+      "code": "F03",
+      "group": "F",
+      "sv": "IPM-skydd",
+      "cause": "IPM-modulärt skydd",
+      "action": "Återhämtar sig efter 150 s"
+    },
+    {
+      "code": "F04",
+      "group": "F",
+      "sv": "Kompressorns kretskort",
+      "cause": "Brist på fas, steg eller hårdvaruskada",
+      "action": "Kontrollera mätspänningen i frekvensomvandlarens kretskort"
+    },
+    {
+      "code": "F05",
+      "group": "F",
+      "sv": "DC-fläktfel",
+      "cause": "Motorns strömåterkoppling är öppen krets eller kortsluten",
+      "action": "Kontrollera att strömkablarna är anslutna i fläktmotorn"
+    },
+    {
+      "code": "F06",
+      "group": "F",
+      "sv": "IPM överström",
+      "cause": "IPM-inströmmen är stor",
+      "action": "Kontrollera och justera strömmätningen"
+    },
+    {
+      "code": "F07",
+      "group": "F",
+      "sv": "Inverterare DC överspänning",
+      "cause": "DC-busspänningen över skyddsvärdet",
+      "action": "Kontrollera den ingående spänningen"
+    },
+    {
+      "code": "F08",
+      "group": "F",
+      "sv": "Inverterare DC underspänning",
+      "cause": "DC-busspänningen under skyddsvärdet",
+      "action": "Kontrollera den ingående spänningen"
+    },
+    {
+      "code": "F09",
+      "group": "F",
+      "sv": "Inverterare låg inspänning",
+      "cause": "Låg inspänning som ger hög inström",
+      "action": "Kontrollera den ingående spänningen"
+    },
+    {
+      "code": "F10",
+      "group": "F",
+      "sv": "Inverterare ingångsöverspänning",
+      "cause": "Inspänningen är för hög",
+      "action": "Kontrollera den ingående spänningen"
+    },
+    {
+      "code": "F11",
+      "group": "F",
+      "sv": "Inverterare provtagningsspänning",
+      "cause": "Provtagningsfel på inspänningen",
+      "action": "Kontrollera och justera spänningen"
+    },
+    {
+      "code": "F12",
+      "group": "F",
+      "sv": "Kommunikationsfel DSP–PFC",
+      "cause": "Anslutningsfel mellan DSP och PFC",
+      "action": "Kontrollera kommunikationsanslutningarna"
+    },
+    {
+      "code": "F15",
+      "group": "F",
+      "sv": "IPM överhettad",
+      "cause": "IPM-modulen är överhettad",
+      "action": "Kontrollera och justera strömmatningen"
+    },
+    {
+      "code": "F16",
+      "group": "F",
+      "sv": "Svag magnetism, varning",
+      "cause": "Kompressorns magnetiska kraft är otillräcklig",
+      "action": ""
+    },
+    {
+      "code": "F17",
+      "group": "F",
+      "sv": "Inverterare matningsfas",
+      "cause": "Inspänningen har förlorat en fas",
+      "action": "Kontrollera och mät spänningen"
+    },
+    {
+      "code": "F18",
+      "group": "F",
+      "sv": "IPM provtagningsström",
+      "cause": "IPM:s strömprovtagning är felaktig",
+      "action": "Kontrollera och mät strömmen"
+    },
+    {
+      "code": "F19",
+      "group": "F",
+      "sv": "Inverterare temperaturgivare",
+      "cause": "Givaren är kortsluten eller öppen krets",
+      "action": "Inspektera eller byt givaren"
+    },
+    {
+      "code": "F20",
+      "group": "F",
+      "sv": "Omvandlaren överhettad",
+      "cause": "Omvandlaren är överhettad",
+      "action": "Kontrollera och justera strömmatningen"
+    },
+    {
+      "code": "F22",
+      "group": "F",
+      "sv": "Omvandlaren överhettad, varning",
+      "cause": "Omvandlarens temperatur är för hög",
+      "action": "Kontrollera och justera strömmatningen"
+    },
+    {
+      "code": "F23",
+      "group": "F",
+      "sv": "Kompressorns överström, varning",
+      "cause": "Kompressorströmmen är för stor",
+      "action": "Kompressorns överströmsskydd"
+    },
+    {
+      "code": "F24",
+      "group": "F",
+      "sv": "Inmatningsström, varning",
+      "cause": "Ingångsströmmen är för stor",
+      "action": "Kontrollera och justera strömmatningen"
+    },
+    {
+      "code": "F25",
+      "group": "F",
+      "sv": "EEPROM-fel, varning",
+      "cause": "MCU-fel",
+      "action": "Kontrollera om chippet är skadat, byt ut"
+    },
+    {
+      "code": "F26",
+      "group": "F",
+      "sv": "Inmatning överström",
+      "cause": "Utrustningsbelastningen är för stor",
+      "action": ""
+    },
+    {
+      "code": "F27",
+      "group": "F",
+      "sv": "PFC-fel",
+      "cause": "PFC-kretsskydd",
+      "action": "Kontrollera om PFC-brytarens rör är kortslutet"
+    },
+    {
+      "code": "F28",
+      "group": "F",
+      "sv": "V15V över- eller underspänning",
+      "cause": "V15V är överbelastad eller underspänd",
+      "action": "Kontrollera att V15V ligger inom 13,5–16,5 V"
+    }
+  ],
+  "uncoded_protections": [
+    {
+      "sv": "Låg temperatur skydd",
+      "cause": "Omgivningstemperaturen är låg",
+      "action": ""
+    },
+    {
+      "sv": "Kompressorns strömskydd",
+      "cause": "Kompressorn är överbelastad",
+      "action": "Kontrollera att kompressorsystemet fungerar normalt"
+    },
+    {
+      "sv": "Frånluft över temp-skydd",
+      "cause": "Kompressorn är överbelastad",
+      "action": "Kontrollera att kompressorsystemet fungerar normalt"
+    },
+    {
+      "sv": "Kommunikationsfel",
+      "cause": "Kommunikationsfel mellan det trådbundna systemet och moderkortet",
+      "action": "Kontrollera kabelanslutningen mellan kontrollenheten och moderkortet"
+    }
   ]
 }

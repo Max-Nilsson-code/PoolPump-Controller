@@ -19,10 +19,9 @@ avgör variant A eller B i `docs/02-protokoll.md`.
 
 ## Steg 1 — lyssna passivt (ändrar ingenting)
 
-> På din KMP Smart 60 (PHNIX): leta först efter en kontakt märkt **`CN13`** på
-> styrkortet. Det är en dedikerad Modbus-slavport — sitter du där kan du hoppa
-> direkt till steg 2 och behålla WiFi-modulen inkopplad. Se
-> `docs/05-kmp-smart-60.md`.
+> På din KMP Smart 60 sitter bussen på moderkortets tvåpoliga plint märkt
+> **`RS485`** (`R485(A)`/`R485(B)`). Där hänger både manöverpanelen och
+> WiFi-modulen. Se [`docs/08-moderkort.md`](08-moderkort.md).
 
 Låt WiFi-modulen sitta kvar och koppla in adaptern **parallellt** på samma
 buss:
@@ -56,9 +55,11 @@ att GND är kopplad och att pumpen är strömsatt.
 
 ## Steg 2 — bli master själv
 
-Bryt strömmen. Sitter du på `CN13` behöver du inte röra WiFi-modulen alls.
-Annars: **koppla loss WiFi-modulen** och sätt adaptern i dess ställe (A, B och
-GND — 12 V behövs inte). Slå på strömmen igen.
+Bryt strömmen och **koppla loss WiFi-modulen**. Sätt adaptern på
+`RS485`-plinten (A och B; jorda mot `P00(GND)`). Slå på strömmen igen.
+
+Panelen sitter kvar på samma buss, så räkna med att den också pratar. Ser du två
+olika mönster i sniffern är det panelen och modulen du hör.
 
 Slavadressen står i panelens servicemeny som parameter `H37`, men
 `--scan-slaves` hittar den också.

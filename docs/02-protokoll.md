@@ -12,9 +12,9 @@ helt vilket angreppssätt som fungerar.
                                Modbus-MASTER               Modbus-SLAV, adress 1
 ```
 
-PHNIX-kort har ofta **tre** separata bussar: panelbussen, WiFi-modulens port och
-en dedikerad Modbus-slavport märkt `CN13`. Använd `CN13` om den finns — se
-`docs/05-kmp-smart-60.md`.
+På KMP Smart 36/60 delar WiFi-modulen och den trådbundna panelen **samma**
+RS-485-buss: moderkortets tvåpoliga plint märkt `RS485` (`R485(A)`/`R485(B)`).
+Se [`docs/08-moderkort.md`](08-moderkort.md).
 
 Styrkortet är en helt vanlig **Modbus RTU-slav**. WiFi-modulen pollar den
 någon gång per sekund och speglar värdena till molnet. Panelen på pumpen
