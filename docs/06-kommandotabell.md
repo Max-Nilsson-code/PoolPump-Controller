@@ -1,3 +1,5 @@
+[← Översikt](../README.md)
+
 # 6. Kommando- och parametertabell (PHNIX / AquaTemp)
 
 Fullständig lista över de kommandon och parametrar KMP Smart 60:s styrkort
@@ -237,6 +239,12 @@ Felaktiga värden kan skada pumpen. Läs gärna, skriv inte.
 
 Koder med suffixet `-bar` gäller enheter med tryckgivare i stället för
 temperaturgivare för avfrostningsstyrning (`H38` avgör vilket).
+
+## Felkoder
+
+Felkoderna som visas på displayen är en egen namnrymd — se
+[`docs/07-felkoder.md`](07-felkoder.md). Observera att `E`, `P` och `F` betyder
+olika saker som felkod och som parameter.
 
 ## Modbus-funktionskoder
 

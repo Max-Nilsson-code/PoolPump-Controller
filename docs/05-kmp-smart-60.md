@@ -1,3 +1,5 @@
+[← Översikt](../README.md)
+
 # 5. KMP Smart 60 — vad som faktiskt gäller
 
 Uppdaterat efter att modellen bekräftats. **Det här dokumentet gäller din pump;

@@ -1,3 +1,5 @@
+[← Översikt](../README.md)
+
 # 3. Steg för steg: ta reda på vad din pump pratar
 
 Räkna med en kväll. Du behöver en **USB-till-RS485-adapter** (~100 kr; helst

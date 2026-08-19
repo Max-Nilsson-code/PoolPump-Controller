@@ -1,3 +1,5 @@
+[← Översikt](../README.md)
+
 # 1. Vad är det för modul?
 
 > **Uppdaterat:** pumpen är bekräftad som KMP Smart 60, alltså PHNIX-byggd med

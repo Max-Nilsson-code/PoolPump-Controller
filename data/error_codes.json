@@ -1,0 +1,26 @@
+{
+  "note": "Felkoder för poolvärmepumpar i PHNIX/AquaTemp-familjen (KMP Smart m.fl.). E- och P-serien är samstämmig över flera svenska manualer för samma OEM-styrkort. F-serien kommer från frekvensomriktarens drivkort och varierar mest mellan modeller. Verifiera alltid mot KMP:s egen manual.",
+  "source": "Svenska installations- och bruksanvisningar för inverterstyrda poolvärmepumpar med samma OEM-styrkort (Poolstore, Flotde, InverPilot, Gullberg & Jansson m.fl.)",
+  "warning": "Koderna E/P/F krockar namnmässigt med parametergrupperna E/P/F i data/phnix_parameters.json. Se docs/07-felkoder.md.",
+  "codes": [
+    {"code": "E01", "group": "E", "sv": "Högt systemtryck", "detail": "Högtrycksvakt löst ut. Kontrollera vattenflöde, luftflöde över förångaren och köldmediemängd.", "confidence": "hög"},
+    {"code": "E02", "group": "E", "sv": "Lågt systemtryck", "detail": "Lågtrycksvakt löst ut. Köldmediebrist, igensatt förångare eller för låg utetemperatur.", "confidence": "hög"},
+    {"code": "E03", "group": "E", "sv": "Flödesskydd", "detail": "Inget eller för lite vatten i systemet. Kontrollera cirkulationspump, filter och bypassventil.", "confidence": "hög"},
+    {"code": "E04", "group": "E", "sv": "Okänd i mina källor", "detail": "Förekommer i serien men betydelsen bekräftades inte. Slå upp i KMP:s manual. På trefasenheter är E04 ofta fasföljdsfel.", "confidence": "okänd"},
+    {"code": "E05", "group": "E", "sv": "Frostskydd vattensystem", "detail": "Vatten- eller omgivningstemperaturen är för låg.", "confidence": "hög"},
+    {"code": "E06", "group": "E", "sv": "För stor temperaturdifferens in/ut", "detail": "Vattenflödet är för lågt. Öppna bypassventilen mindre så mer vatten går genom pumpen.", "confidence": "hög"},
+    {"code": "E07", "group": "E", "sv": "Frysskydd i kylläge", "detail": "Utloppsvattnets temperatur är för låg.", "confidence": "hög"},
+    {"code": "E08", "group": "E", "sv": "Kommunikationsfel", "detail": "Ingen kommunikation mellan styrkort och display. Kontrollera panelbussens kablage.", "confidence": "hög"},
+    {"code": "P01", "group": "P", "sv": "Givarfel inloppsvatten", "detail": "Givaren är bruten eller kortsluten. Motsvarar T02.", "confidence": "hög"},
+    {"code": "P02", "group": "P", "sv": "Givarfel utloppsvatten", "detail": "Givaren är bruten eller kortsluten. Motsvarar T03.", "confidence": "hög"},
+    {"code": "P03", "group": "P", "sv": "Givarfel värmeväxlare", "detail": "Inre batteriets givare bruten eller kortsluten.", "confidence": "hög"},
+    {"code": "P04", "group": "P", "sv": "Givarfel omgivning", "detail": "Utomhusgivaren bruten eller kortsluten. Motsvarar T05.", "confidence": "hög"},
+    {"code": "P05", "group": "P", "sv": "Givarfel förångare", "detail": "Yttre batteriets givare ej ansluten, kabelbrott eller kortslutning. Motsvarar T04.", "confidence": "hög"},
+    {"code": "P07", "group": "P", "sv": "Givarfel suggas", "detail": "Sugtemperaturgivaren ej ansluten, kabelbrott eller kortslutning. Motsvarar T01.", "confidence": "hög"},
+    {"code": "F01", "group": "F", "sv": "MOP-drivlarm", "detail": "Återställs automatiskt efter cirka 150 sekunder.", "confidence": "medel"},
+    {"code": "F02", "group": "F", "sv": "Frekvensomriktaren offline", "detail": "Kommunikationsfel mellan frekvensomriktare och moderkort. Kontrollera kablaget mellan korten.", "confidence": "medel"},
+    {"code": "F03", "group": "F", "sv": "IPM-modulskydd", "detail": "Skydd i effektmodulen, ofta fasbortfall mot kompressorn.", "confidence": "medel"},
+    {"code": "F04", "group": "F", "sv": "Fel på motorströmsåterkoppling", "detail": "Avbrott eller kortslutning i strömmätningen.", "confidence": "medel"},
+    {"code": "F05", "group": "F", "sv": "Hög IPM-ingångsström eller överspänning", "detail": "DC-mellanledets spänning över skyddsnivån.", "confidence": "medel"}
+  ]
+}

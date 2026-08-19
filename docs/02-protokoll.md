@@ -1,3 +1,5 @@
+[← Översikt](../README.md)
+
 # 2. Hur kommunikationen ser ut
 
 Det finns två arkitekturer i den här produktkategorin. Vilken du har avgör

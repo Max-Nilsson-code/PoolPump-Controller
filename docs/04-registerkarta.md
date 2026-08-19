@@ -1,3 +1,5 @@
+[← Översikt](../README.md)
+
 # 4. Referens-registerkarta (Fairland-familjen)
 
 > **Gäller inte KMP Smart 60.** Kartan nedan tillhör Fairland/IPS-familjen och
