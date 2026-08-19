@@ -46,7 +46,8 @@ Du behöver en USB-till-RS485-adapter, helst galvaniskt isolerad.
 | `docs/03-sniffa.md` | Steg-för-steg-guide, från passiv lyssning till skrivning |
 | `docs/04-registerkarta.md` | Referenskarta för Fairland-familjen (jämförelse, gäller *inte* KMP) |
 | `docs/05-kmp-smart-60.md` | **KMP Smart 60 / PHNIX: bussar, CN13, parametertabell, molnvägen** |
-| `data/phnix_parameters.json` | Alla 150 PHNIX-parameterkoder maskinläsbart |
+| `docs/06-kommandotabell.md` | **Alla kommandon och parametrar med svensk förklaring** |
+| `data/phnix_parameters.json` | Samma tabell maskinläsbart |
 | `tools/rs485_sniff.py` | Passiv sniffer, avkodar Modbus RTU och Tuya MCU, gissar baud |
 | `tools/modbus_probe.py` | Aktiv master: slavskanning, registerdump, ändringsbevakning |
 | `tools/protocol.py` | Ramavkodning, CRC, checksummor (inga beroenden) |

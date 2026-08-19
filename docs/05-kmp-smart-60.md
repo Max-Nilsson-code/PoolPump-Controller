@@ -67,69 +67,13 @@ vilket register som rör sig, och sätt rätt kod på det.
 
 Maskinläsbar version med alla 150 parametrar: `data/phnix_parameters.json`.
 
-### Mätvärden — `T`
+Hela tabellen med alla 150 koder — mätvärden, börvärden, ingångar, utgångar
+och serviceparametrar — finns i **[`docs/06-kommandotabell.md`](06-kommandotabell.md)**,
+och maskinläsbart i `data/phnix_parameters.json`.
 
-| Kod | Betydelse | Enhet |
-|-----|-----------|-------|
-| `T01` | Suction Temp. | °C |
-| `T02` | Inlet water Temp. | °C |
-| `T03` | Outlet water Temp. | °C |
-| `T04` | Coil 1 Temp. | °C |
-| `T05` | Ambient Temp. | °C |
-| `T06` | Exhaust Temp. | °C |
-| `T07` | Compressor current Detect | A |
-| `T08` | AC Fan Output | % |
-| `T09` | Flow Rate Input | Hz |
-| `T10` | Pressure Sensor | bar |
-| `T11` | Super heat | °C |
-| `T12` | Target speed of fan motor | r |
-| `T13` | Over heat after commpen. | °C |
-| `T14` | Inverter plate AC voltage | V |
-| `T15` | Antifreeze Temp. | °C |
-| `T16` | EC Fan motor Speed | r |
-| `T17` | Speed of fan motor1 | r |
-| `T18` | Speed of fan motor2 | r |
-| `T19` | Buses voltage | V |
-| `T20` | Limited Frequency Protect State |  |
-| `T21` | Frequency Reduction Protect State |  |
-| `T22` | Coil 2 Temp. | °C |
-| `T23` | driver board running state 1 |  |
-| `T24` | driver board running state 2 |  |
-| `T25` | driver board running state 3 |  |
-| `T26` | driver board running state 4 |  |
-| `T27` | driver board running state 5 |  |
-| `T28` | Target frequency |  |
-
-### Börvärden och gränser — `R`
-
-| Kod | Betydelse | Enhet |
-|-----|-----------|-------|
-| `R01` | Cooling set | °C |
-| `R02` | Heating set | °C |
-| `R03` | Auto. Set | °C |
-| `R04` | Temp Difference | °C |
-| `R05` | Power Off Temp Difference | °C |
-| `R08` | Min. cool | °C |
-| `R09` | Max. cool | °C |
-| `R10` | Min. heat | °C |
-| `R11` | Max. heat | °C |
-| `R12` | Power on Difference | °C |
-
-### Ingångar — `S`
-
-| Kod | Betydelse | Enhet |
-|-----|-----------|-------|
-| `S01` | HP switch |  |
-| `S02` | LP switch |  |
-| `S03` | Flow switch |  |
-| `S04` | Remote switch |  |
-| `S05` | Mode switch |  |
-| `S06` | Master/Slave switch |  |
-
-Utöver dessa finns `D` (avfrostning), `E` (expansionsventil), `F` (fläkt och
-frekvens), `H` (systemparametrar), `O` (utgångar) och `P` (skydd). De ligger i
-JSON-filen. Rör dem inte förrän allt annat är kartlagt — `D`-, `E`- och
-`F`-parametrarna styr kompressorskydd.
+De grupper som finns: `T` mätvärden, `R` börvärden, `S` ingångar, `O` utgångar,
+`P` cirkulationspump, `D` avfrostning, `E` expansionsventil, `F` fläkt och
+frekvens, `H` systemparametrar.
 
 ### De fyra styrbara
 
