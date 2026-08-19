@@ -3,12 +3,16 @@
 Det finns två arkitekturer i den här produktkategorin. Vilken du har avgör
 helt vilket angreppssätt som fungerar.
 
-## A. WiFi-modulen är Modbus-master på RS-485 (troligast för din modul)
+## A. WiFi-modulen är Modbus-master på RS-485 (så fungerar din KMP Smart 60)
 
 ```
- Tuya-molnet  <--WiFi-->  [WiFi-modul]  <--RS-485-->  [Värmepumpens styrkort]
-                           Modbus-MASTER               Modbus-SLAV, adress 1
+ AquaTemp-molnet  <--WiFi-->  [WiFi-modul]  <--RS-485-->  [Värmepumpens styrkort]
+                               Modbus-MASTER               Modbus-SLAV, adress 1
 ```
+
+PHNIX-kort har ofta **tre** separata bussar: panelbussen, WiFi-modulens port och
+en dedikerad Modbus-slavport märkt `CN13`. Använd `CN13` om den finns — se
+`docs/05-kmp-smart-60.md`.
 
 Styrkortet är en helt vanlig **Modbus RTU-slav**. WiFi-modulen pollar den
 någon gång per sekund och speglar värdena till molnet. Panelen på pumpen

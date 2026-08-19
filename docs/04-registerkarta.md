@@ -1,9 +1,13 @@
 # 4. Referens-registerkarta (Fairland-familjen)
 
-Kartan nedan är sammanställd från publika projekt för Fairland/IPS-baserade
-poolvärmepumpar och stämmer på ett stort antal ombrandade modeller. **Betrakta
-den som en startgissning, inte som sanning för just din pump** — verifiera med
-`--watch` enligt `docs/03-sniffa.md` innan du bygger något ovanpå.
+> **Gäller inte KMP Smart 60.** Kartan nedan tillhör Fairland/IPS-familjen och
+> finns här som jämförelse — för att visa hur en färdigkartlagd pump ser ut och
+> vilka skalningsknep som förekommer. För din PHNIX-byggda pump gäller
+> `docs/05-kmp-smart-60.md`.
+
+Kartan är sammanställd från publika projekt för Fairland/IPS-baserade
+poolvärmepumpar och stämmer på ett stort antal ombrandade modeller. Verifiera
+alltid med `--watch` enligt `docs/03-sniffa.md` innan du bygger något ovanpå.
 
 Portparametrar: `9600 8N1`, slavadress `1`.
 

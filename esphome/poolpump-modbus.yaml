@@ -6,8 +6,10 @@
 # Hårdvara: LilyGO T-CAN485 (ESP32 + MAX13487E + 12 V-ingång). GPIO-numren
 # nedan gäller det kortet — byt dem om du använder ett annat.
 #
-# Registerkartan följer docs/04-registerkarta.md och är verifierad för
-# Fairland-familjen. VERIFIERA MOT DIN EGEN PUMP innan du litar på värdena.
+# OBS: registerkartan nedan följer docs/04-registerkarta.md och gäller
+# Fairland-familjen — INTE PHNIX/KMP Smart 60. Använd den som mall och byt ut
+# adresser och skalningar mot det du kartlagt med tools/modbus_probe.py --watch.
+# Se docs/05-kmp-smart-60.md.
 # Härledd från https://github.com/Elwell/pool-heatpump (Apache-2.0).
 
 substitutions:

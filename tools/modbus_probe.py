@@ -96,10 +96,29 @@ class Master:
                              value >> 8, value & 0xFF]))
 
 
-def as_temp(raw: int) -> str:
-    """Fairland/IPS "temperaturtyp 1": faktisk grad = (rått - 60) / 2."""
-    value = (raw - 60) / 2
-    return f"{value:6.1f}°C" if -30 <= value <= 120 else "        "
+def signed16(raw: int) -> int:
+    return raw - 0x10000 if raw > 0x7FFF else raw
+
+
+def interpret(raw: int) -> str:
+    """Visa de skalningar som förekommer, så du kan känna igen rätt register.
+
+    Skalningen skiljer sig mellan tillverkare: PHNIX/AquaTemp använder oftast
+    /10 (ibland /1 med tecken), Fairland/IPS använder (rått - 60) / 2. Kolumnen
+    som matchar det panelen visar är den rätta.
+    """
+    def fmt(value: float) -> str:
+        return f"{value:7.1f}" if -50 <= value <= 250 else "       "
+
+    return (f"{fmt(signed16(raw) / 10)} {fmt(signed16(raw))} "
+            f"{fmt((raw - 60) / 2)}")
+
+
+HEADER = f"  {'adr':>4}  {'rått':>6}  {'hex':>6}   {'/10':>7} {'signed':>7} {'(x-60)/2':>7}"
+
+
+def watch_hint(raw: int) -> str:
+    return f"/10={signed16(raw) / 10:g}  (x-60)/2={(raw - 60) / 2:g}"
 
 
 def read_block(master: Master, unit: int, kind: str, start: int, end: int,
@@ -162,14 +181,17 @@ def do_dump(master: Master, args: argparse.Namespace) -> int:
         if not values:
             print("  (inget svar)")
             continue
+        if kind in ("input", "holding"):
+            print(HEADER)
         for addr in sorted(values):
             raw = values[addr]
             if kind in ("input", "holding"):
-                print(f"  {addr:>4}: {raw:>6}  0x{raw:04X}  {as_temp(raw)}")
+                print(f"  {addr:>4}  {raw:>6}  0x{raw:04X}  {interpret(raw)}")
             else:
                 print(f"  {addr:>4}: {raw}")
-    print("\nTips: '°C'-kolumnen är en gissning – (rått-60)/2. Jämför med vad "
-          "panelen visar för att bekräfta skalningen.")
+    print("\nTre skalningskolumner visas eftersom tillverkarna skiljer sig åt. "
+          "Jämför med vad panelen visar för in-/utloppstemperatur – den kolumn "
+          "som stämmer gäller för hela pumpen.")
     return 0
 
 
@@ -197,7 +219,8 @@ def do_watch(master: Master, args: argparse.Namespace) -> int:
                     if old != raw:
                         previous[key] = raw
                         stamp = time.strftime("%H:%M:%S")
-                        extra = f"  ({as_temp(raw).strip()})" if kind in ("input", "holding") else ""
+                        extra = (f"   {watch_hint(raw)}"
+                                 if kind in ("input", "holding") else "")
                         print(f"[{stamp}] {kind}[{addr}]: {old} -> {raw}{extra}")
             time.sleep(args.interval)
     except KeyboardInterrupt:

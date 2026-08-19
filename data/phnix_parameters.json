@@ -1,0 +1,1068 @@
+{
+  "source": "https://github.com/radical-squared/aquatemp (AquaTemp/PHNIX HA-integration)",
+  "note": "Parameterkoder från AquaTemp-molnets protokoll. Samma koder visas i manöverpanelens servicemeny. Modbus-registernumren är INTE kända – kartlägg dem med tools/modbus_probe.py --watch.",
+  "groups": {
+    "T": "Mätvärden (sensorer, läsbara)",
+    "R": "Börvärden och temperaturgränser",
+    "S": "Ingångar / brytare",
+    "H": "Systemparametrar",
+    "D": "Avfrostning",
+    "E": "Expansionsventil (EEV)",
+    "F": "Fläkt och frekvens",
+    "P": "Skydd / pump",
+    "O": "Utgångar",
+    "M": "Övrigt"
+  },
+  "parameters": [
+    {
+      "code": "D01",
+      "group": "D",
+      "name": "Stat Defrosting Temp",
+      "unit": "°C",
+      "device_class": "temperature"
+    },
+    {
+      "code": "D01-bar",
+      "group": "D",
+      "name": "Start setp.",
+      "unit": "bar",
+      "device_class": "pressure"
+    },
+    {
+      "code": "D02",
+      "group": "D",
+      "name": "End Defrosting Temp",
+      "unit": "°C",
+      "device_class": "temperature"
+    },
+    {
+      "code": "D03",
+      "group": "D",
+      "name": "Defrosting Cycle",
+      "unit": "min",
+      "device_class": "duration"
+    },
+    {
+      "code": "D04",
+      "group": "D",
+      "name": "Max. Duration",
+      "unit": "min",
+      "device_class": "duration"
+    },
+    {
+      "code": "D06",
+      "group": "D",
+      "name": "Defrost type",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "D07",
+      "group": "D",
+      "name": "Out Temp when Defrost",
+      "unit": "°C",
+      "device_class": "temperature"
+    },
+    {
+      "code": "D08",
+      "group": "D",
+      "name": "Defrost Coil Temp. Deviation",
+      "unit": "°C",
+      "device_class": "temperature"
+    },
+    {
+      "code": "D08-bar",
+      "group": "D",
+      "name": "Compensation offset",
+      "unit": "bar",
+      "device_class": "pressure"
+    },
+    {
+      "code": "D09",
+      "group": "D",
+      "name": "Defrost out Temp. Deviation",
+      "unit": "°C",
+      "device_class": "temperature"
+    },
+    {
+      "code": "D10",
+      "group": "D",
+      "name": "Defrost ending coil temp.",
+      "unit": "°C",
+      "device_class": "temperature"
+    },
+    {
+      "code": "D10-bar",
+      "group": "D",
+      "name": "Defrost ending pressure.",
+      "unit": "bar",
+      "device_class": "pressure"
+    },
+    {
+      "code": "E01",
+      "group": "E",
+      "name": "EEV Mode",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "E02",
+      "group": "E",
+      "name": "Super Heat",
+      "unit": "°C",
+      "device_class": "temperature"
+    },
+    {
+      "code": "E03",
+      "group": "E",
+      "name": "Init. Place",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "E04",
+      "group": "E",
+      "name": "Min. Place",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "E05",
+      "group": "E",
+      "name": "Defrost Place",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "E06",
+      "group": "E",
+      "name": "Cooling Place",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "E07",
+      "group": "E",
+      "name": "EEV exhaust set temp.",
+      "unit": "°C",
+      "device_class": "temperature"
+    },
+    {
+      "code": "E09",
+      "group": "E",
+      "name": "EEV step proportion value",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "E10",
+      "group": "E",
+      "name": "EEV step integral value",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "E11",
+      "group": "E",
+      "name": "EEV step differential value",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "E12",
+      "group": "E",
+      "name": "Super heatcompen. differ.",
+      "unit": "°C",
+      "device_class": "temperature"
+    },
+    {
+      "code": "F01",
+      "group": "F",
+      "name": "Speed",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "F02",
+      "group": "F",
+      "name": "Max. cool",
+      "unit": "°C",
+      "device_class": "temperature"
+    },
+    {
+      "code": "F02-bar",
+      "group": "F",
+      "name": "Cooling high speed pressure",
+      "unit": "bar",
+      "device_class": "pressure"
+    },
+    {
+      "code": "F03",
+      "group": "F",
+      "name": "Min. cool",
+      "unit": "°C",
+      "device_class": "temperature"
+    },
+    {
+      "code": "F03-bar",
+      "group": "F",
+      "name": "Cooling low speed pressure",
+      "unit": "bar",
+      "device_class": "pressure"
+    },
+    {
+      "code": "F04",
+      "group": "F",
+      "name": "Stop cool",
+      "unit": "°C",
+      "device_class": "temperature"
+    },
+    {
+      "code": "F04-bar",
+      "group": "F",
+      "name": "Cooling motor off pressure",
+      "unit": "bar",
+      "device_class": "pressure"
+    },
+    {
+      "code": "F05",
+      "group": "F",
+      "name": "Max. heat",
+      "unit": "°C",
+      "device_class": "temperature"
+    },
+    {
+      "code": "F05-bar",
+      "group": "F",
+      "name": "Heating high speed pressure",
+      "unit": "bar",
+      "device_class": "pressure"
+    },
+    {
+      "code": "F06",
+      "group": "F",
+      "name": "Min. heat",
+      "unit": "°C",
+      "device_class": "temperature"
+    },
+    {
+      "code": "F06-bar",
+      "group": "F",
+      "name": "Heating low speed pressure",
+      "unit": "bar",
+      "device_class": "pressure"
+    },
+    {
+      "code": "F07",
+      "group": "F",
+      "name": "Stop heat",
+      "unit": "°C",
+      "device_class": "temperature"
+    },
+    {
+      "code": "F07-bar",
+      "group": "F",
+      "name": "Heating motor off pressure",
+      "unit": "bar",
+      "device_class": "pressure"
+    },
+    {
+      "code": "F10",
+      "group": "F",
+      "name": "Ctrl. probe",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "F11",
+      "group": "F",
+      "name": "Heating Max. Duty Ratio",
+      "unit": "%",
+      "device_class": null
+    },
+    {
+      "code": "F12",
+      "group": "F",
+      "name": "Cooling Fan Duty Ratio",
+      "unit": "%",
+      "device_class": null
+    },
+    {
+      "code": "F13",
+      "group": "F",
+      "name": "Heating Min. fan duty ratio",
+      "unit": "%",
+      "device_class": null
+    },
+    {
+      "code": "F14",
+      "group": "F",
+      "name": "Timer Mute Start",
+      "unit": "h",
+      "device_class": "duration"
+    },
+    {
+      "code": "F15",
+      "group": "F",
+      "name": "Timer Mute End",
+      "unit": "h",
+      "device_class": "duration"
+    },
+    {
+      "code": "F16",
+      "group": "F",
+      "name": "Duty Ratio of Mute Mode",
+      "unit": "%",
+      "device_class": null
+    },
+    {
+      "code": "F17",
+      "group": "F",
+      "name": "Timer Mute ON/OFF",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "F18",
+      "group": "F",
+      "name": "Manual Fan motor Speed",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "F19",
+      "group": "F",
+      "name": "AC Fan Rated Duty Ratio",
+      "unit": "%",
+      "device_class": null
+    },
+    {
+      "code": "F20",
+      "group": "F",
+      "name": "PWM Detect/Antifreeze Temp.",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "H01",
+      "group": "H",
+      "name": "Power Down Memory",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "H02",
+      "group": "H",
+      "name": "Mode Type",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "H03",
+      "group": "H",
+      "name": "Temperature Unit",
+      "unit": "°C",
+      "device_class": "temperature"
+    },
+    {
+      "code": "H06",
+      "group": "H",
+      "name": "Heating Min. frequency",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "H07",
+      "group": "H",
+      "name": "Cooling Min. frequency",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "H08",
+      "group": "H",
+      "name": "Heating Max frequency",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "H09",
+      "group": "H",
+      "name": "Cooling Max frequency",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "H10",
+      "group": "H",
+      "name": "Delay off time",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "H11",
+      "group": "H",
+      "name": "Auto mode restarting time",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "H12",
+      "group": "H",
+      "name": "Compressor type",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "H13",
+      "group": "H",
+      "name": "Comp. Defrost Frequency",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "H14",
+      "group": "H",
+      "name": "Frequency Cycle of 0.2℃",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "H15",
+      "group": "H",
+      "name": "Comp. Overcurren Protect",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "H16",
+      "group": "H",
+      "name": "Refrigerant Type",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "H17",
+      "group": "H",
+      "name": "Cool start Compen. Low temp.",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "H18",
+      "group": "H",
+      "name": "Cool stop Compen. Low temp.",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "H19",
+      "group": "H",
+      "name": "Cool Max. Frequency low temp.",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "H20",
+      "group": "H",
+      "name": "Cool start Compen. high temp.",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "H21",
+      "group": "H",
+      "name": "Cool stop Compen. High temp.",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "H22",
+      "group": "H",
+      "name": "Cool stop Frequency high temp.",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "H23",
+      "group": "H",
+      "name": "Heat start Compen.low temp.",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "H24",
+      "group": "H",
+      "name": "Heat stop Compen.low temp.",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "H25",
+      "group": "H",
+      "name": "Heat Max.frequency low temp",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "H26",
+      "group": "H",
+      "name": "Heat start Compen.high temp.",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "H27",
+      "group": "H",
+      "name": "Heat stop Compen.high temp.",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "H28",
+      "group": "H",
+      "name": "Heat Max.frequency high temp.",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "H29",
+      "group": "H",
+      "name": "Max. Pressure Sensor Value",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "H30",
+      "group": "H",
+      "name": "Min. Pressure Sensor Value",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "H31",
+      "group": "H",
+      "name": "Ambient temp. before commpen.",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "H32",
+      "group": "H",
+      "name": "Ambient temp. after commpen.",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "H33",
+      "group": "H",
+      "name": "Max. Frequency silent comp.",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "H34",
+      "group": "H",
+      "name": "Comp. stop.",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "H35",
+      "group": "H",
+      "name": "Temp Difference of Start Freq.",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "H36",
+      "group": "H",
+      "name": "Start Frequency",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "H37",
+      "group": "H",
+      "name": "Unit Address",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "H38",
+      "group": "H",
+      "name": "Pressure Measurement",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "H39",
+      "group": "H",
+      "name": "Resonance 1",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "H40",
+      "group": "H",
+      "name": "Resonance 2",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "H41",
+      "group": "H",
+      "name": "Resonance 3",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "H42",
+      "group": "H",
+      "name": "Fast Test Mode",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "H43",
+      "group": "H",
+      "name": "Dual Coil",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "O01",
+      "group": "O",
+      "name": "Compressor",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "O02",
+      "group": "O",
+      "name": "High fan",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "O03",
+      "group": "O",
+      "name": "Low fan",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "O04",
+      "group": "O",
+      "name": "Circulate pump",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "O05",
+      "group": "O",
+      "name": "4-way valve",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "O06",
+      "group": "O",
+      "name": "Exp. Valve",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "O07",
+      "group": "O",
+      "name": "Comp. Output frequency",
+      "unit": "Hz",
+      "device_class": "frequency"
+    },
+    {
+      "code": "O08",
+      "group": "O",
+      "name": "Compressor current",
+      "unit": "A",
+      "device_class": "current"
+    },
+    {
+      "code": "O09",
+      "group": "O",
+      "name": "IPM Temp.",
+      "unit": "°C",
+      "device_class": "temperature"
+    },
+    {
+      "code": "P01",
+      "group": "P",
+      "name": "Mode",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "P02",
+      "group": "P",
+      "name": "Interval",
+      "unit": "min",
+      "device_class": "duration"
+    },
+    {
+      "code": "P03",
+      "group": "P",
+      "name": "Duration",
+      "unit": "min",
+      "device_class": "duration"
+    },
+    {
+      "code": "P04",
+      "group": "P",
+      "name": "Advance",
+      "unit": "min",
+      "device_class": "duration"
+    },
+    {
+      "code": "P05",
+      "group": "P",
+      "name": "Water pump filtration",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "P06",
+      "group": "P",
+      "name": "Water Pump Filtration start Time1",
+      "unit": "h",
+      "device_class": "duration"
+    },
+    {
+      "code": "P07",
+      "group": "P",
+      "name": "Water Pump Filtration End Time1",
+      "unit": "h",
+      "device_class": "duration"
+    },
+    {
+      "code": "P08",
+      "group": "P",
+      "name": "Water Pump Filtration start Time2",
+      "unit": "h",
+      "device_class": "duration"
+    },
+    {
+      "code": "P09",
+      "group": "P",
+      "name": "Water Pump Filtration End Time 2",
+      "unit": "h",
+      "device_class": "duration"
+    },
+    {
+      "code": "R01",
+      "group": "R",
+      "name": "Cooling set",
+      "unit": "°C",
+      "device_class": "temperature"
+    },
+    {
+      "code": "R02",
+      "group": "R",
+      "name": "Heating set",
+      "unit": "°C",
+      "device_class": "temperature"
+    },
+    {
+      "code": "R03",
+      "group": "R",
+      "name": "Auto. Set",
+      "unit": "°C",
+      "device_class": "temperature"
+    },
+    {
+      "code": "R04",
+      "group": "R",
+      "name": "Temp Difference",
+      "unit": "°C",
+      "device_class": "temperature"
+    },
+    {
+      "code": "R05",
+      "group": "R",
+      "name": "Power Off Temp Difference",
+      "unit": "°C",
+      "device_class": "temperature"
+    },
+    {
+      "code": "R08",
+      "group": "R",
+      "name": "Min. cool",
+      "unit": "°C",
+      "device_class": "temperature"
+    },
+    {
+      "code": "R09",
+      "group": "R",
+      "name": "Max. cool",
+      "unit": "°C",
+      "device_class": "temperature"
+    },
+    {
+      "code": "R10",
+      "group": "R",
+      "name": "Min. heat",
+      "unit": "°C",
+      "device_class": "temperature"
+    },
+    {
+      "code": "R11",
+      "group": "R",
+      "name": "Max. heat",
+      "unit": "°C",
+      "device_class": "temperature"
+    },
+    {
+      "code": "R12",
+      "group": "R",
+      "name": "Power on Difference",
+      "unit": "°C",
+      "device_class": "temperature"
+    },
+    {
+      "code": "S01",
+      "group": "S",
+      "name": "HP switch",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "S02",
+      "group": "S",
+      "name": "LP switch",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "S03",
+      "group": "S",
+      "name": "Flow switch",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "S04",
+      "group": "S",
+      "name": "Remote switch",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "S05",
+      "group": "S",
+      "name": "Mode switch",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "S06",
+      "group": "S",
+      "name": "Master/Slave switch",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "T01",
+      "group": "T",
+      "name": "Suction Temp.",
+      "unit": "°C",
+      "device_class": "temperature"
+    },
+    {
+      "code": "T02",
+      "group": "T",
+      "name": "Inlet water Temp.",
+      "unit": "°C",
+      "device_class": "temperature"
+    },
+    {
+      "code": "T03",
+      "group": "T",
+      "name": "Outlet water Temp.",
+      "unit": "°C",
+      "device_class": "temperature"
+    },
+    {
+      "code": "T04",
+      "group": "T",
+      "name": "Coil 1 Temp.",
+      "unit": "°C",
+      "device_class": "temperature"
+    },
+    {
+      "code": "T05",
+      "group": "T",
+      "name": "Ambient Temp.",
+      "unit": "°C",
+      "device_class": "temperature"
+    },
+    {
+      "code": "T06",
+      "group": "T",
+      "name": "Exhaust Temp.",
+      "unit": "°C",
+      "device_class": "temperature"
+    },
+    {
+      "code": "T07",
+      "group": "T",
+      "name": "Compressor current Detect",
+      "unit": "A",
+      "device_class": "current"
+    },
+    {
+      "code": "T08",
+      "group": "T",
+      "name": "AC Fan Output",
+      "unit": "%",
+      "device_class": null
+    },
+    {
+      "code": "T09",
+      "group": "T",
+      "name": "Flow Rate Input",
+      "unit": "Hz",
+      "device_class": "frequency"
+    },
+    {
+      "code": "T10",
+      "group": "T",
+      "name": "Pressure Sensor",
+      "unit": "bar",
+      "device_class": "pressure"
+    },
+    {
+      "code": "T11",
+      "group": "T",
+      "name": "Super heat",
+      "unit": "°C",
+      "device_class": "temperature"
+    },
+    {
+      "code": "T12",
+      "group": "T",
+      "name": "Target speed of fan motor",
+      "unit": "r",
+      "device_class": null
+    },
+    {
+      "code": "T13",
+      "group": "T",
+      "name": "Over heat after commpen.",
+      "unit": "°C",
+      "device_class": "temperature"
+    },
+    {
+      "code": "T14",
+      "group": "T",
+      "name": "Inverter plate AC voltage",
+      "unit": "V",
+      "device_class": "voltage"
+    },
+    {
+      "code": "T15",
+      "group": "T",
+      "name": "Antifreeze Temp.",
+      "unit": "°C",
+      "device_class": "temperature"
+    },
+    {
+      "code": "T16",
+      "group": "T",
+      "name": "EC Fan motor Speed",
+      "unit": "r",
+      "device_class": null
+    },
+    {
+      "code": "T17",
+      "group": "T",
+      "name": "Speed of fan motor1",
+      "unit": "r",
+      "device_class": null
+    },
+    {
+      "code": "T18",
+      "group": "T",
+      "name": "Speed of fan motor2",
+      "unit": "r",
+      "device_class": null
+    },
+    {
+      "code": "T19",
+      "group": "T",
+      "name": "Buses voltage",
+      "unit": "V",
+      "device_class": "voltage"
+    },
+    {
+      "code": "T20",
+      "group": "T",
+      "name": "Limited Frequency Protect State",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "T21",
+      "group": "T",
+      "name": "Frequency Reduction Protect State",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "T22",
+      "group": "T",
+      "name": "Coil 2 Temp.",
+      "unit": "°C",
+      "device_class": "temperature"
+    },
+    {
+      "code": "T23",
+      "group": "T",
+      "name": "driver board running state 1",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "T24",
+      "group": "T",
+      "name": "driver board running state 2",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "T25",
+      "group": "T",
+      "name": "driver board running state 3",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "T26",
+      "group": "T",
+      "name": "driver board running state 4",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "T27",
+      "group": "T",
+      "name": "driver board running state 5",
+      "unit": null,
+      "device_class": null
+    },
+    {
+      "code": "T28",
+      "group": "T",
+      "name": "Target frequency",
+      "unit": null,
+      "device_class": null
+    }
+  ]
+}

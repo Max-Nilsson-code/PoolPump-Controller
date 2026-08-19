@@ -1,5 +1,9 @@
 # 1. Vad är det för modul?
 
+> **Uppdaterat:** pumpen är bekräftad som KMP Smart 60, alltså PHNIX-byggd med
+> AquaTemp-appen. Modulen är en AquaTemp-modul, inte en Tuya-modul. Arkitekturen
+> nedan stämmer ändå — se `docs/05-kmp-smart-60.md` för det som gäller specifikt.
+
 ## Kort svar
 
 Bilden visar en **WiFi-modul (gateway) för poolvärmepump**, av den typ som

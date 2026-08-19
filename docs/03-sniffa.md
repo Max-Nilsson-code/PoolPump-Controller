@@ -17,6 +17,11 @@ avgör variant A eller B i `docs/02-protokoll.md`.
 
 ## Steg 1 — lyssna passivt (ändrar ingenting)
 
+> På din KMP Smart 60 (PHNIX): leta först efter en kontakt märkt **`CN13`** på
+> styrkortet. Det är en dedikerad Modbus-slavport — sitter du där kan du hoppa
+> direkt till steg 2 och behålla WiFi-modulen inkopplad. Se
+> `docs/05-kmp-smart-60.md`.
+
 Låt WiFi-modulen sitta kvar och koppla in adaptern **parallellt** på samma
 buss:
 
@@ -49,8 +54,12 @@ att GND är kopplad och att pumpen är strömsatt.
 
 ## Steg 2 — bli master själv
 
-Bryt strömmen. **Koppla loss WiFi-modulen** och sätt adaptern i dess ställe
-(A, B och GND — 12 V behövs inte). Slå på strömmen igen.
+Bryt strömmen. Sitter du på `CN13` behöver du inte röra WiFi-modulen alls.
+Annars: **koppla loss WiFi-modulen** och sätt adaptern i dess ställe (A, B och
+GND — 12 V behövs inte). Slå på strömmen igen.
+
+Slavadressen står i panelens servicemeny som parameter `H37`, men
+`--scan-slaves` hittar den också.
 
 ```bash
 python3 tools/modbus_probe.py --port /dev/ttyUSB0 --scan-slaves
