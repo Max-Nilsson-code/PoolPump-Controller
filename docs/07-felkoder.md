@@ -30,14 +30,19 @@ betyder pumpläge. Parametersidan finns i
 | `P04` | Givarfel omgivning | Temperaturgivaren är trasig eller kortsluten | Kontrollera eller byt givaren |
 | `P05` | Givarfel rör | Temperaturgivaren är trasig eller kortsluten | Kontrollera eller byt givaren |
 | `P07` | Givarfel suggas | Temperaturgivaren är trasig eller kortsluten | Kontrollera eller byt givaren |
-| `P081` | Givarfel hetgas | Temperaturgivaren är trasig eller kortsluten | Kontrollera eller byt givaren |
+| `P08` | Givarfel hetgas | Temperaturgivaren är trasig eller kortsluten | Kontrollera eller byt givaren |
 | `P09` | Givarfel frostskyddsmedel | Frostskyddsmedlets temperaturgivare är trasig eller kortsluten | Kontrollera och ersätt givaren |
 | `PP` | Trycksensorfel | Trycksensorn är bruten | Kontrollera eller byt trycksensorn |
 
 Notera att det inte finns något `P03` eller `P06` i den här serien. Varje
 givarfel motsvarar en `T`-parameter som slutat leverera vettiga värden:
-`P01`→`T02`, `P02`→`T03`, `P04`→`T05`, `P05`→`T04`, `P07`→`T01`, `P081`→`T06`.
+`P01`→`T02`, `P02`→`T03`, `P04`→`T05`, `P05`→`T04`, `P07`→`T01`, `P08`→`T06`.
 Det kan du bekräfta direkt över Modbus.
+
+> Manualens PDF skriver koderna som `P081` och `E08` som `E081` — en
+> fotnotssiffra som klistrats ihop med koden i textextraktionen. `E08` är
+> bekräftad mot en faktisk displayvisning; `P08` är rättad av samma skäl men
+> inte lika bekräftad ännu.
 
 ## `E` — drift- och skyddsfel
 
@@ -51,7 +56,7 @@ Det kan du bekräfta direkt över Modbus.
 | `E07` | Frostskydd | Vattenflödet är inte tillräckligt | Kontrollera vattenflödet och om systemet är blockerat |
 | `E19` | Primärt frostskydd | Omgivningstemperaturen är låg | — |
 | `E29` | Sekundärt frostskydd | Omgivningstemperaturen är låg | — |
-| `E081` | Kommunikationsfel hastighetskontrollenhet | Kommunikationen mellan hastighetskontrollenheten och moderkortet misslyckas | Kontrollera kommunikationsanslutningen |
+| `E08` | Kommunikationsfel hastighetskontrollenhet | Kommunikationen mellan hastighetskontrollenheten och moderkortet misslyckas | Kontrollera kommunikationsanslutningen |
 
 `E03` och `E06` är de vanligaste och handlar båda om vattenflöde: stäng
 bypassventilen mer så att mer vatten går genom värmepumpen.

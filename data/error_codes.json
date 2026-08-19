@@ -39,11 +39,12 @@
       "action": "Kontrollera eller byt givaren"
     },
     {
-      "code": "P081",
+      "code": "P08",
       "group": "P",
       "sv": "Givarfel hetgas",
       "cause": "Temperaturgivaren är trasig eller kortsluten",
-      "action": "Kontrollera eller byt givaren"
+      "action": "Kontrollera eller byt givaren",
+      "note": "Manualens PDF skriver \"P081\" (samma typsättningsartefakt som E081). Ej ännu bekräftat mot display, men rättat av samma skäl."
     },
     {
       "code": "P09",
@@ -116,11 +117,12 @@
       "action": ""
     },
     {
-      "code": "E081",
+      "code": "E08",
       "group": "E",
       "sv": "Kommunikationsfel hastighetskontrollenhet",
       "cause": "Kommunikationen mellan hastighetskontrollenheten och moderkortet misslyckas",
-      "action": "Kontrollera kommunikationsanslutningen"
+      "action": "Kontrollera kommunikationsanslutningen",
+      "note": "Manualens PDF skriver \"E081\" (troligen en fotnotssiffra som klistrats ihop med koden). Bekräftat mot faktisk display: koden är E08."
     },
     {
       "code": "TP",
