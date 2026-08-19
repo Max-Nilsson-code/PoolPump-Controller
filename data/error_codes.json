@@ -122,7 +122,7 @@
       "sv": "Kommunikationsfel hastighetskontrollenhet",
       "cause": "Kommunikationen mellan hastighetskontrollenheten och moderkortet misslyckas",
       "action": "Kontrollera kommunikationsanslutningen",
-      "note": "Manualens PDF skriver \"E081\" (troligen en fotnotssiffra som klistrats ihop med koden). Bekräftat mot faktisk display: koden är E08."
+      "note": "Manualens PDF skriver \"E081\" (troligen en fotnotssiffra som klistrats ihop med koden). Fältverifierat av användaren: koden på displayen är E08 (kommunikationsfel)."
     },
     {
       "code": "TP",

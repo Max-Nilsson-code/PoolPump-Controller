@@ -41,8 +41,8 @@ Det kan du bekräfta direkt över Modbus.
 
 > Manualens PDF skriver koderna som `P081` och `E08` som `E081` — en
 > fotnotssiffra som klistrats ihop med koden i textextraktionen. `E08` är
-> bekräftad mot en faktisk displayvisning; `P08` är rättad av samma skäl men
-> inte lika bekräftad ännu.
+> **fältverifierad**: koden på displayen är faktiskt `E08`, kommunikationsfel.
+> `P08` är rättad av samma skäl men inte lika bekräftad ännu.
 
 ## `E` — drift- och skyddsfel
 
